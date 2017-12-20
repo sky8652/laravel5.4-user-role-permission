@@ -47,7 +47,7 @@ class UserController extends Controller
             'username'      => $request->get('username'),
             'password'  => bcrypt($request->get('password')),
         ]);
-        return redirect('admin/user');
+        return redirect('admin/user')->with('alert-msg','添加成功');
     }
 
     /**
@@ -95,7 +95,7 @@ class UserController extends Controller
             $data['password'] = bcrypt($request->get('password'));
         }
         $user->update($data);
-        return redirect('admin/user');
+        return redirect('admin/user')->with('alert-msg','更新成功');
     }
 
     /**
@@ -136,7 +136,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->roles()->sync($request->get('roles'));
-        return redirect('admin/user');
+        return redirect('admin/user')->with('alert-msg','更新成功');
     }
 
 }

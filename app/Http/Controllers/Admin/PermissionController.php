@@ -41,7 +41,7 @@ class PermissionController extends Controller
     public function store(PermissionCreateRequest $request)
     {
         Permission::create($request->all());
-        return redirect('admin/permission');
+        return redirect('admin/permission')->with('alert-msg','添加成功');
     }
 
     /**
@@ -79,7 +79,7 @@ class PermissionController extends Controller
     {
         $permission = Permission::find($id);
         $permission->update($request->all());
-        return redirect('admin/permission');
+        return redirect('admin/permission')->with('alert-msg','更新成功');
     }
 
     /**
