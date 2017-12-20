@@ -44,7 +44,7 @@ class RoleController extends Controller
             'name'  => $request->get('name'),
             'display_name'   => $request->get('display_name') ? $request->get('display_name') : $request->get('name')
         ]);
-        return redirect('admin/role');
+        return redirect('admin/role')->with('alert-msg','添加成功');
     }
 
     /**
@@ -82,7 +82,7 @@ class RoleController extends Controller
     {
         $role = Role::find($id);
         $role->update($request->all());
-        return redirect('admin/role');
+        return redirect('admin/role')->with('alert-msg','更新成功');
     }
 
     /**
@@ -148,7 +148,7 @@ class RoleController extends Controller
         $role = Role::find($id);
         $permissions = $request->get('permissions');
         $role->permissions()->sync($permissions);
-        return redirect('admin/role');
+        return redirect('admin/role')->with('alert-msg','授权成功');
     }
     
 }

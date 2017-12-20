@@ -89,11 +89,15 @@
 
         //统一错误提示信息
         @if(count($errors)>0)
-        var errorStr = '';
-        @foreach($errors->all() as $error)
-            errorStr += "{{$error}}<br />";
-        @endforeach
-        layer.msg(errorStr);
+            var errorStr = '';
+            @foreach($errors->all() as $error)
+                errorStr += "{{$error}}<br />";
+            @endforeach
+            layer.msg(errorStr);
+        @endif
+
+        @if(session('alert-msg'))
+            layer.msg("{{session('alert-msg')}}");
         @endif
 
     });
