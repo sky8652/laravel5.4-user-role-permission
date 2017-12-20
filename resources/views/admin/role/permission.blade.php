@@ -23,7 +23,7 @@
             </tr>
             @foreach($permissions as $permission)
             <tr>
-                <td><input id="menu{{$permission->id}}-" type="checkbox" name="permissions[]" value="{{$permission->id}}" title="{{$permission->display_name}}" lay-skin="primary" {{$permission->checked ? 'checked' : ''}} ></td>
+                <td><input id="menu{{$permission->id}}" type="checkbox" name="permissions[]" value="{{$permission->id}}" title="{{$permission->display_name}}" lay-skin="primary" {{$permission->checked ? 'checked' : ''}} ></td>
                 @if(!empty($permission->allChilds))
                 <td>
                     <table class="layui-table" lay-size="sm" lay-skin="">
@@ -77,7 +77,7 @@
                         });
                     } else {
                         //第一季菜单不需要做处理
-                        $("input[id*=" + ids[0] + "]").each(function (i, ele) {
+                        $("input[id*=" + ids[0] + "-]").each(function (i, ele) {
                             $(ele).prop("checked", true);
                         });
                     }
@@ -90,7 +90,7 @@
                             $(ele).prop("checked", false);
                         });
                     } else if (ids.length == 1) {
-                        $("input[id*=" + ids[0] + "]").each(function (i, ele) {
+                        $("input[id*=" + ids[0] + "-]").each(function (i, ele) {
                             $(ele).prop("checked", false);
                         });
                     }
