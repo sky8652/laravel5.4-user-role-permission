@@ -179,7 +179,7 @@ return [
 
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Overtrue\LaravelWechat\ServiceProvider::class,
-
+        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class
     ],
 
     /*

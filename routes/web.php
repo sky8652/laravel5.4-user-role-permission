@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test','TestController@index');
+//图片上传公共地址
+Route::post('uploadImg','PublicController@uploadImg')->name('uploadImg');
