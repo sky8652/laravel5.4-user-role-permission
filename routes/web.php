@@ -17,3 +17,6 @@ Route::get('/', function () {
 
 //图片上传公共地址
 Route::post('uploadImg','PublicController@uploadImg')->name('uploadImg');
+
+//微信服务端接收地址
+Route::any('wechat','WechatController@serve');
