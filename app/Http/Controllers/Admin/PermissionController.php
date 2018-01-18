@@ -91,16 +91,16 @@ class PermissionController extends Controller
     public function destroy($id)
     {
 
-        $permission = Permission::with(['roles'])->find($id);
+        $permission = Permission::with(['roles','childs'])->find($id);
 
         //是否有子菜单
-        if (Permission::where('parent_id',$id)->first()){
+        if (!$permission->childs->isEmpty()){
             return response()->json(['code'=>1,'msg'=>'请先删除子菜单']);
         }
 
         // TODO 必需先删除权限
         //如果有关联角色，则移除关联
-        if (!empty($permission->roles)){
+        if (!$permission->roles->isEmpty()){
             $permission->roles()->detach();
         }
         //删除权限

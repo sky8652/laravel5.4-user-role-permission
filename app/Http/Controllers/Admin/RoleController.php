@@ -97,11 +97,11 @@ class RoleController extends Controller
 
         // TODO 必需先删除关联表，再删除角色
         //如果有关联的用户，则移除
-        if (!empty($role->users)){
+        if (!$role->users->isEmpty()){
             $role->users()->detach();
         }
         //如果有关联的权限，则移除
-        if (!empty($role->permissions)){
+        if (!$role->permissions->isEmpty()){
             $role->permissions()->detach();
         }
 

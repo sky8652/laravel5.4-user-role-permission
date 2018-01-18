@@ -110,7 +110,7 @@ class UserController extends Controller
 
         // TODO 先删除关联表里的角色
         //如果有关联的角色，则移除
-        if (!empty($user->roles)){
+        if (!$user->roles->isEmpty()){
             $user->roles()->detach();
         }
         //删除用户
