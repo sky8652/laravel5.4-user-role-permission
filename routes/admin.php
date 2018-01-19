@@ -45,8 +45,8 @@ Route::group(['middleware'=>['auth'],'prefix'=>'admin/','namespace'=>'Admin'],fu
             //删除用户
             Route::delete('user/{user}','UserController@destroy')->name('user.destroy')->middleware('can:user.destroy');
             //分配角色
-            Route::get('user/{user}/assignRole','UserController@assignRole')->name('user.role')->middleware('user.role');
-            Route::put('user/{user}/saveRole','UserController@saveRole')->name('user.saveRole')->middleware('user.role');
+            Route::get('user/{user}/assignRole','UserController@assignRole')->name('user.role')->middleware('can:user.role');
+            Route::put('user/{user}/saveRole','UserController@saveRole')->name('user.saveRole')->middleware('can:user.role');
         });
 
         //权限管理
